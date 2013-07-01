@@ -2,18 +2,12 @@
 
 	$.fn.rotator = function(options) {
 
-		var defaults = {
-			speed : 3000,
-			transition_speed : 500,
-			sub_selector : '.rotate'
-		};
-
 		// Options. Use empty object so we don't overwrite our defaults
 		var opts = $.extend({}, defaults, options);
 
 		// Set other essential values
 		var current = 1;
-		var children = this.children(sub_selector);
+		var children = this.children(opts.sub_selector);
 		var total = children.length;
 
 		// Hide all "rotate" divs
@@ -28,7 +22,7 @@
 		function rotate_this()
 		{
 
-			$cur.stop().fadeOut(transition_speed, function(){
+			$cur.stop().fadeOut(opts.transition_speed, function(){
 
 				// See if we're at the end
 				if (current == total) {
@@ -37,20 +31,18 @@
 				} else
 					$cur = $cur.next();
 
-				$cur.fadeIn(transition_speed);
+				$cur.fadeIn(opts.transition_speed);
 
 				current++;
 
-				console.log("rotate: "+current+" out of "+total);
-
-				setTimeout(rotate_this,speed);
+				setTimeout(rotate_this,opts.speed);
 
 			});
 
 		}
 
 		// Start it
-		setTimeout(rotate_this,speed);
+		setTimeout(rotate_this,opts.speed);
 
 		return this;
 
