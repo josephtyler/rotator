@@ -32,7 +32,7 @@
 				// See if we're at the end
 				if (current == total) {
 					$cur = $this.children(sub_selector).first();
-					current = 1;
+					current = 0;
 				} else
 					$cur = $cur.next();
 
