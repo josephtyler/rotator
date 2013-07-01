@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>rotator demo</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="rotator.js"></script>
+<style type="text/css">
+#rotate { padding:10px; border:1px solid #ccc; background-color:#fafafa; }
+.rotate h1 { text-align:center; color:#555; }
+</style>
+</head>
+<body>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#rotate").rotator();
+});
+</script>
+
+<div id="rotate">
+	<div class="rotate"><h1>div.rotate 1</h1></div>
+	<div class="rotate"><h1>div.rotate 2</h1></div>
+	<div class="rotate"><h1>div.rotate 3</h1></div>
+	<div class="rotate"><h1>div.rotate 4</h1></div>
+</div>
+
+</body>
+</html>

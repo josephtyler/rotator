@@ -1,49 +1,56 @@
 (function($){
 
-$.fn.rotator = function(options) {
+	$.fn.rotator = function(options) {
 
-// Options and defaults
-var speed = options.speed ? options.speed : 3000; // Milliseconds
-var transition_speed = options.transition_speed ? options.transition_speed : 2000; // Milliseconds
+		// Options and defaults
+		if (typeof options == "undefined") {
+			var options = {};
+		}
 
-// Set other essential values
-var current = 1;
-var total = this.children(".rotate").length;
+		var speed = options.speed ? options.speed : 3000; // Milliseconds
+		var transition_speed = options.transition_speed ? options.transition_speed : 500; // Milliseconds
+		var sub_selector = options.sub_selector ? options.sub_selector : ".rotate";
 
-// Hide all "rotate" divs
-this.children(".rotate").hide();
+		// Set other essential values
+		var current = 1;
+		var total = this.children(sub_selector).length;
 
-// Get the first rotate div to show
-var $cur = this.children(".rotate").first();
-var $this = this;
+		// Hide all "rotate" divs
+		this.children(sub_selector).hide();
 
-$cur.fadeIn();
+		// Get the first rotate div to show
+		var $cur = this.children(sub_selector).first();
+		var $this = this;
 
-function rotate_this()
-{
+		$cur.fadeIn();
 
-$cur.fadeOut(transition_speed, function(){
+		function rotate_this()
+		{
 
-current++;
+			$cur.stop().fadeOut(transition_speed, function(){
 
-// See if we're at the end
-if (current == total) {
-$cur = $this.children(".rotate").first();
-current = 1;
-} else
-$cur = $cur.next();
+				// See if we're at the end
+				if (current == total) {
+					$cur = $this.children(sub_selector).first();
+					current = 1;
+				} else
+					$cur = $cur.next();
 
-$cur.fadeIn(transition_speed);
+				$cur.fadeIn(transition_speed);
 
-});
+				current++;
 
-}
+				console.log("rotate: "+current+" out of "+total);
 
-// Start it
-setInterval(rotate_this,speed);
+			});
 
-return this;
+		}
 
-};
+		// Start it
+		setInterval(rotate_this,speed);
+
+		return this;
+
+	};
 
 })(jQuery);
