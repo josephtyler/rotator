@@ -2,6 +2,12 @@
 
 	$.fn.rotator = function(options) {
 
+		var defaults = {
+			speed : 3000,
+			transition_speed : 500,
+			sub_selector : '.rotate'
+		};
+
 		// Options. Use empty object so we don't overwrite our defaults
 		var opts = $.extend({}, defaults, options);
 
