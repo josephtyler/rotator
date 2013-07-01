@@ -2,24 +2,19 @@
 
 	$.fn.rotator = function(options) {
 
-		// Options and defaults
-		if (typeof options == "undefined") {
-			var options = {};
-		}
-
-		var speed = options.speed ? options.speed : 3000; // Milliseconds
-		var transition_speed = options.transition_speed ? options.transition_speed : 500; // Milliseconds
-		var sub_selector = options.sub_selector ? options.sub_selector : ".rotate";
+	  // Options. Use empty object so we don't overwrite our defaults
+	  var opts = $.extend({}, defaults, options);
 
 		// Set other essential values
 		var current = 1;
-		var total = this.children(sub_selector).length;
+		var children = this.children(sub_selector);
+		var total = children.length;
 
 		// Hide all "rotate" divs
-		this.children(sub_selector).hide();
+		children.hide();
 
 		// Get the first rotate div to show
-		var $cur = this.children(sub_selector).first();
+		var $cur = children.first();
 		var $this = this;
 
 		$cur.fadeIn();
@@ -31,7 +26,7 @@
 
 				// See if we're at the end
 				if (current == total) {
-					$cur = $this.children(sub_selector).first();
+					$cur = children.first();
 					current = 0;
 				} else
 					$cur = $cur.next();
@@ -42,15 +37,23 @@
 
 				console.log("rotate: "+current+" out of "+total);
 
+    		setTimeout(rotate_this,speed);
+
 			});
 
 		}
 
 		// Start it
-		setInterval(rotate_this,speed);
+		setTimeout(rotate_this,speed);
 
 		return this;
 
+	};
+
+	var defaults = $.fn.defaults = {
+  	speed: 3e3,
+  	transition_speed: 500,
+  	sub_selector: '.rotate'
 	};
 
 })(jQuery);
