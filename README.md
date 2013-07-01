@@ -1,5 +1,7 @@
 <h1>rotator</h1>
 
+<p><a href="http://josephtyler.github.io/rotator/">View a demo here</a><p>
+
 <p>'rotator' is a cleverly named jQuery plugin that .... rotates stuff. It's a very simple way to rotate information on a page. It requires that you include jQuery and the rotator.js file.</p>
 
 <h2>Usage</h2>
