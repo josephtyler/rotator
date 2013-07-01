@@ -2,8 +2,8 @@
 
 	$.fn.rotator = function(options) {
 
-	  // Options. Use empty object so we don't overwrite our defaults
-	  var opts = $.extend({}, defaults, options);
+		// Options. Use empty object so we don't overwrite our defaults
+		var opts = $.extend({}, defaults, options);
 
 		// Set other essential values
 		var current = 1;
@@ -37,7 +37,7 @@
 
 				console.log("rotate: "+current+" out of "+total);
 
-    		setTimeout(rotate_this,speed);
+				setTimeout(rotate_this,speed);
 
 			});
 
@@ -51,9 +51,9 @@
 	};
 
 	var defaults = $.fn.defaults = {
-  	speed: 3e3,
-  	transition_speed: 500,
-  	sub_selector: '.rotate'
+		speed: 3e3,
+		transition_speed: 500,
+		sub_selector: '.rotate'
 	};
 
 })(jQuery);
